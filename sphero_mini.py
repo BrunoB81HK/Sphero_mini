@@ -1,6 +1,6 @@
 from bluepy.btle import Peripheral
 from bluepy import btle
-from sphero_constants import *
+from Sphero_mini.sphero_constants import *
 import struct
 import time
 import sys

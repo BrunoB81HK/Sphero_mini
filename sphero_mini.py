@@ -163,7 +163,7 @@ class sphero_mini():
                   commID = drivingCommands["driveWithHeading"],
                   payload = [speedL, headingH, headingL, speedH])
 
-        self.getAcknowledgement("Roll")
+        # self.getAcknowledgement("Roll")
 
     def resetHeading(self):
         '''

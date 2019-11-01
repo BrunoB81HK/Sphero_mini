@@ -134,7 +134,7 @@ class sphero_mini():
                   commID = userIOCommandIDs["allLEDs"],
                   payload = [0x00, 0x01, brightness])
 
-        self.getAcknowledgement("LED/backlight")
+        # self.getAcknowledgement("LED/backlight")
 
     def roll(self, speed=None, heading=None):
         '''
@@ -179,7 +179,7 @@ class sphero_mini():
                   commID = drivingCommands["resetHeading"],
                   payload = []) #empty payload
 
-        self.getAcknowledgement("Heading")
+        # self.getAcknowledgement("Heading")
 
     def returnMainApplicationVersion(self):
         '''
@@ -227,7 +227,7 @@ class sphero_mini():
                    commID=drivingCommands['stabilization'],
                    payload=[val])
 
-        self.getAcknowledgement("Stabilization")
+        # self.getAcknowledgement("Stabilization")
 
     def wait(self, delay):
         '''

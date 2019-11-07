@@ -161,7 +161,8 @@ class sphero_mini():
         self._send(characteristic = self.API_V2_characteristic,
                   devID = deviceID['driving'],
                   commID = drivingCommands["driveWithHeading"],
-                  payload = [speedL, headingH, headingL, speedH])
+                  payload = [speedL, headingH, headingL, speedH],
+                   response = "requestsOnlyErrorResponse")
 
         # self.getAcknowledgement("Roll")
 
@@ -240,7 +241,7 @@ class sphero_mini():
             if time.time() - start > delay:
                 break
 
-    def _send(self, characteristic=None, devID=None, commID=None, payload=[]):
+    def _send(self, characteristic=None, devID=None, commID=None, payload=[], response="requestsResponse"):
         '''
         A generic "send" method, which will be used by other methods to send a command ID, payload and
         appropriate checksum to a specified device ID. Mainly useful because payloads are optional,
@@ -260,7 +261,7 @@ class sphero_mini():
 
         '''
         sendBytes = [sendPacketConstants["StartOfPacket"],
-                    sum([flags["resetsInactivityTimeout"], flags["requestsResponse"]]),
+                    sum([flags["resetsInactivityTimeout"], flags[response]]),
                     devID,
                     commID,
                     self.sequence] + payload # concatenate payload list

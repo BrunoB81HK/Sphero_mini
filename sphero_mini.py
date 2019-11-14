@@ -293,16 +293,16 @@ class sphero_mini():
         while(1):
             self.p.waitForNotifications(1)
             if self.sphero_delegate.notification_seq == self.sequence-1: # use one less than sequence, because _send function increments it for next send. 
-                #if self.verbosity > 3:
-                    #print("[RESP {}] {}".format(self.sequence-1, self.sphero_delegate.notification_ack))
+                if self.verbosity > 3:
+                    print("[RESP {}] {}".format(self.sequence-1, self.sphero_delegate.notification_ack))
                 self.sphero_delegate.clear_notification()
                 break
-            #elif self.sphero_delegate.notification_seq >= 0:
-                #print("Unexpected ACK. Expected: {}/{}, received: {}/{}".format(
-                    #ack, self.sequence, self.sphero_delegate.notification_ack.split()[0],
-                    #self.sphero_delegate.notification_seq), file=sys.stderr)
+            elif self.sphero_delegate.notification_seq >= 0:
+                print("Unexpected ACK. Expected: {}/{}, received: {}/{}".format(
+                    ack, self.sequence, self.sphero_delegate.notification_ack.split()[0],
+                    self.sphero_delegate.notification_seq), file=sys.stderr)
             if time.time() > start + 10:
-                #print("Timeout waiting for acknowledgement: {}/{}".format(ack, self.sequence), file=sys.stderr)
+                print("Timeout waiting for acknowledgement: {}/{}".format(ack, self.sequence), file=sys.stderr)
                 break
 
 # =======================================================================

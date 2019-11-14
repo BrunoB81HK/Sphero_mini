@@ -297,11 +297,10 @@ class sphero_mini():
                     print("[RESP {}] {}".format(self.sequence-1, self.sphero_delegate.notification_ack))
                 self.sphero_delegate.clear_notification()
                 break
-            elif self.sphero_delegate.notification_seq >= 0:
-                print("Unexpected ACK. Expected: {}/{}, received: {}/{}".format(
-                    ack, self.sequence, self.sphero_delegate.notification_ack.split()[0],
-                    self.sphero_delegate.notification_seq),
-                    file=sys.stderr)
+            #elif self.sphero_delegate.notification_seq >= 0:
+                #print("Unexpected ACK. Expected: {}/{}, received: {}/{}".format(
+                    #ack, self.sequence, self.sphero_delegate.notification_ack.split()[0],
+                    #self.sphero_delegate.notification_seq), file=sys.stderr)
             if time.time() > start + 10:
                 print("Timeout waiting for acknowledgement: {}/{}".format(ack, self.sequence), file=sys.stderr)
                 break

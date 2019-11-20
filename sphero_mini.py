@@ -305,6 +305,9 @@ class sphero_mini():
                 print("Timeout waiting for acknowledgement: {}/{}".format(ack, self.sequence), file=sys.stderr)
                 break
 
+    def collision_detection_callback(self):
+        pass
+
 # =======================================================================
 # The following functions are experimental:
 # =======================================================================
